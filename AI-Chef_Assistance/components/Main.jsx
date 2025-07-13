@@ -4,13 +4,9 @@ export function Main(){
 
     const [ingredients, set_ingredients] = React.useState([]);
     
-    function handleSubmit(event){
+    function handleSubmit(formData){
 
-        event.preventDefault();
-
-        const form_data = new FormData(event.currentTarget);
-        const new_ingredient = form_data.get("ingredient");
-
+        const new_ingredient = formData.get("ingredient");
         set_ingredients((prev_ingredients) => [...prev_ingredients, new_ingredient]);
     }
 
@@ -18,7 +14,7 @@ export function Main(){
 
     return(
         <main>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <input
                 type="text"
                 placeholder="e.g. Potato"
