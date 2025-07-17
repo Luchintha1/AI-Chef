@@ -15,6 +15,12 @@ export function Main(){
         setIngredients((prev_ingredients) => [...prev_ingredients, new_ingredient]);
     }
 
+    React.useEffect(() => {
+        if (recipe !== "" && recipeSection.current !== null) {
+            recipeSection.current.scrollIntoView({behavior: "smooth"})
+        }
+    }, [recipe])
+
     async function getRecipe(){
         const receipeResponse = await getRecipeFromMistral(ingredients);
         console.log(receipeResponse);
