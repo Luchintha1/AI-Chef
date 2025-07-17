@@ -7,6 +7,8 @@ export function Main(){
 
     const [ingredients, setIngredients] = React.useState([]);
     const [recipe, setRecipe] = React.useState("");
+
+    const recipeSection = React.useRef(null);
     
     function handleSubmit(formData){
         const new_ingredient = formData.get("ingredient");
@@ -31,7 +33,7 @@ export function Main(){
                 <button>Add Ingredient</button>
             </form>
             {ingredients.length > 0 &&
-            <IngredientsList ingredients={ingredients} getReceipe={getRecipe}/>}
+            <IngredientsList ref={recipeSection} ingredients={ingredients} getReceipe={getRecipe}/>}
             {
                 recipe && <Recipe recipe={recipe}/>
             }
